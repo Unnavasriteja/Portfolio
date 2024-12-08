@@ -49,10 +49,10 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <h1
-          className={`text-xl font-bold ${
-            isHomePage
-              ? "gradient-text hover:scale-110 transition-transform duration-300"
-              : "text-white"
+          className={`text-xl font-bold transition-transform duration-300 ${
+            isScrolled || !isHomePage
+              ? "text-white"
+              : "gradient-text hover:scale-110"
           }`}
         >
           <Link href="/">Sai Sri Teja Unnava</Link>

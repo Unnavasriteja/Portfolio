@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
+import { FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
@@ -14,24 +16,12 @@ const ContactForm = () => {
 
     const form = e.target as HTMLFormElement;
 
-    // Debug: Check if environment variables are defined
-    if (
-      !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    ) {
-      console.error("Missing EmailJS environment variables.");
-      setFormStatus("error");
-      return;
-    }
-
     try {
-      // Send form data via EmailJS using environment variables
       const result = await emailjs.sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
         form,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
       );
 
       console.log("Email sent successfully:", result.text);
@@ -43,18 +33,39 @@ const ContactForm = () => {
     }
   };
 
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div className="container mx-auto px-6 py-20 mt-16 max-w-4xl">
-      <br />
-      <br />
-      <h1 className="text-5xl font-bold mb-10 text-center text-white">Contact</h1>
-      <form
+    <motion.div
+      className="container mx-auto px-6 py-20 max-w-4xl"
+      style={{ paddingTop: "100px" }} // Adjusted padding
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+      }}
+    >
+      <motion.h1
+        className="text-5xl font-bold mb-10 text-center text-white"
+        variants={fadeInVariants}
+      >
+        Contact Me
+      </motion.h1>
+
+      {/* Contact Form */}
+      <motion.form
         onSubmit={handleSubmit}
         className="rounded-lg p-10"
         style={{ background: "transparent" }}
+        variants={fadeInVariants}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
+          <motion.div variants={fadeInVariants}>
             <label
               className="block text-sm font-semibold text-white mb-2"
               htmlFor="firstName"
@@ -69,8 +80,8 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your first name"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={fadeInVariants}>
             <label
               className="block text-sm font-semibold text-white mb-2"
               htmlFor="lastName"
@@ -85,8 +96,8 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your last name"
             />
-          </div>
-          <div className="md:col-span-2">
+          </motion.div>
+          <motion.div className="md:col-span-2" variants={fadeInVariants}>
             <label
               className="block text-sm font-semibold text-white mb-2"
               htmlFor="email"
@@ -101,8 +112,8 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="example@gmail.com"
             />
-          </div>
-          <div className="md:col-span-2">
+          </motion.div>
+          <motion.div className="md:col-span-2" variants={fadeInVariants}>
             <label
               className="block text-sm font-semibold text-white mb-2"
               htmlFor="subject"
@@ -117,8 +128,8 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter the subject"
             />
-          </div>
-          <div className="md:col-span-2">
+          </motion.div>
+          <motion.div className="md:col-span-2" variants={fadeInVariants}>
             <label
               className="block text-sm font-semibold text-white mb-2"
               htmlFor="message"
@@ -133,26 +144,57 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Type your message here..."
             ></textarea>
-          </div>
+          </motion.div>
         </div>
-        <button
+        <motion.button
           type="submit"
           className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+          variants={fadeInVariants}
         >
           Send
-        </button>
-      </form>
+        </motion.button>
+      </motion.form>
+
+      {/* Form Status */}
       {formStatus === "success" && (
-        <p className="text-green-500 text-center mt-6">
+        <motion.p
+          className="text-green-500 text-center mt-6"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInVariants}
+        >
           Your message has been sent successfully!
-        </p>
+        </motion.p>
       )}
       {formStatus === "error" && (
-        <p className="text-red-500 text-center mt-6">
+        <motion.p
+          className="text-red-500 text-center mt-6"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInVariants}
+        >
           There was an error sending your message. Please try again.
-        </p>
+        </motion.p>
       )}
-    </div>
+
+      {/* Quick Links Section */}
+      <motion.div
+        className="mt-16 text-center space-y-6"
+        variants={fadeInVariants}
+      >
+        <motion.a
+          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 text-white px-6 py-3 rounded-full flex items-center justify-center mx-auto hover:bg-green-600 transition"
+          style={{ maxWidth: "300px" }}
+          variants={fadeInVariants}
+        >
+          <FaWhatsapp className="mr-2 text-xl" />
+          Chat on WhatsApp
+        </motion.a>
+      </motion.div>
+    </motion.div>
   );
 };
 

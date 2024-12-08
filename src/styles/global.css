@@ -555,3 +555,28 @@ form {
   50% { text-shadow: 0 0 10px #fff, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700; }
   100% { text-shadow: 0 0 5px #fff, 0 0 10px #f4e04d, 0 0 20px #f4e04d, 0 0 30px #f4e04d; }
 }
+/* Tooltip styling */
+.tooltip {
+  position: absolute;
+  bottom: -30px; /* Position below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Display tooltip on hover */
+.group:hover .tooltip {
+  opacity: 1;
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}

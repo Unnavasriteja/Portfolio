@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion"; // Framer Motion Import
 import "../styles/global.css";
 
 const skills = [
@@ -18,14 +19,16 @@ const skills = [
   "ReactJs",
 ];
 
+const fadeInVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
 export default function Home() {
   const [typedText, setTypedText] = useState("");
   const [skillIndex, setSkillIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(100);
-
-  const devOpsRef = useRef<HTMLDivElement | null>(null);
-  const cloudRef = useRef<HTMLDivElement | null>(null);
 
   // Typing Animation Logic
   useEffect(() => {
@@ -53,35 +56,25 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [typedText, isDeleting, skillIndex, speed]);
 
-  // Scroll Animation Logic
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll(".section");
-      sections.forEach((section) => {
-        const top = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (top < windowHeight - 100) {
-          section.classList.add("appear");
-        } else {
-          section.classList.remove("appear");
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       {/* Hero Section */}
-      <section className="hero-section text-white relative">
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={fadeInVariant}
+        className="hero-section text-white relative"
+      >
         <div className="blob-wrapper"></div>
 
-        <div className="container mx-auto flex flex-col items-center text-center relative z-10 px-4 sm:px-8 md:px-12 py-20 fade-in">
+        <div className="container mx-auto flex flex-col items-center text-center relative z-10 px-4 sm:px-8 md:px-12 py-20">
           <div className="relative">
-            <div className="profile-pic-wrapper">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="profile-pic-wrapper"
+            >
               <Image
                 src="/assets/profile.jpeg"
                 alt="Sai Sri Teja Unnava"
@@ -89,7 +82,7 @@ export default function Home() {
                 height={200}
                 className="profile-pic"
               />
-            </div>
+            </motion.div>
           </div>
           <div className="mt-6">
             <h1 className="text-5xl font-bold mb-4">Sai Sri Teja Unnava</h1>
@@ -104,28 +97,34 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 mt-6">
-            <a href="#contact" className="btn-primary">
+            <motion.a
+              href="contact"
+              className="btn-primary"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Get in Touch
-            </a>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1Wm_lkOzrX7p3GFoldMmwbK61soQsX6no"
-              download="Sai_Sri_Teja_Unnava_Resume.pdf"
-              className="btn-secondary"
-            >
-              Download Resume
-            </a>
-            <a
-              href="#projects"
+            </motion.a>
+            <motion.a
+              href="about"
               className="text-white underline text-lg hover:text-yellow-300"
+              whileHover={{ color: "#FFD700" }}
             >
-              Explore Projects →
-            </a>
+              Know more about me →
+            </motion.a>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* DevOps Section */}
-      <section id="devops" ref={devOpsRef} className="section">
+      <motion.section
+        id="devops"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInVariant}
+        className="section"
+      >
         <div className="container mx-auto flex items-center gap-8">
           <Image
             src="/assets/devops-icon.png"
@@ -146,10 +145,17 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Cloud Computing Section */}
-      <section id="cloud-computing" ref={cloudRef} className="section">
+      <motion.section
+        id="cloud-computing"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInVariant}
+        className="section"
+      >
         <div className="container mx-auto flex items-center gap-8 flex-row-reverse">
           <Image
             src="/assets/cloud-icon.png"
@@ -170,7 +176,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }
