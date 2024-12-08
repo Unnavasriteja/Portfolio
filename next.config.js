@@ -1,5 +1,4 @@
 const nextConfig = {
- 
   images: {
     unoptimized: true, // Required for static export
   },

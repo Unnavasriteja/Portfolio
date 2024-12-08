@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-import { FaWhatsapp } from "react-icons/fa";
+//import { FaWhatsapp } from "react-icons/fa";
 
 
 const ContactForm = () => {
@@ -183,7 +183,7 @@ const ContactForm = () => {
         className="mt-16 text-center space-y-6"
         variants={fadeInVariants}
       >
-        <motion.a
+        {/* <motion.a
           href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -193,7 +193,7 @@ const ContactForm = () => {
         >
           <FaWhatsapp className="mr-2 text-xl" />
           Chat on WhatsApp
-        </motion.a>
+        </motion.a> */}
       </motion.div>
     </motion.div>
   );
