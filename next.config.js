@@ -1,6 +1,7 @@
 const nextConfig = {
+  output: "export", // Static export
   images: {
-    unoptimized: true, // Optional: disable image optimization
+    unoptimized: true, // Required for static export
   },
   webpack(config) {
     config.module.rules.push({
