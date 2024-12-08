@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-import { FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
