@@ -66,14 +66,9 @@ const Header: React.FC = () => {
           >
             About
           </Link>
+          
           <Link
-            href="/#skills"
-            className="hover:text-yellow-400 transition-colors duration-300"
-          >
-            Skills
-          </Link>
-          <Link
-            href="/#projects"
+            href="/projects"
             className="hover:text-yellow-400 transition-colors duration-300"
           >
             Projects
@@ -110,30 +105,16 @@ const Header: React.FC = () => {
           >
             About
           </Link>
+         
           <Link
-            href="/#skills"
-            className="hover:text-yellow-400 transition-colors duration-300"
-            role="menuitem"
-            onClick={closeMobileMenu}
-          >
-            Skills
-          </Link>
-          <Link
-            href="/#projects"
+            href="/projects"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
             onClick={closeMobileMenu}
           >
             Projects
           </Link>
-          <Link
-            href="/#experience"
-            className="hover:text-yellow-400 transition-colors duration-300"
-            role="menuitem"
-            onClick={closeMobileMenu}
-          >
-            Experience
-          </Link>
+  
           <Link
             href="/contact"
             className="hover:text-yellow-400 transition-colors duration-300"
