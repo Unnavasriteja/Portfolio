@@ -1,10 +1,14 @@
 const nextConfig = {
+  output: "export", // Enable static export
+  images: {
+    unoptimized: true, // Disable image optimization for compatibility with static export
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
           options: {
             svgo: false, // Disable optimization for complex SVGs
           },
@@ -15,8 +19,4 @@ const nextConfig = {
   },
 };
 
-
-
-module.exports = {
-  output: "export",
-};
+module.exports = nextConfig;
