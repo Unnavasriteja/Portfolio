@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import "../styles/global.css";
-import Blob from "../components/Blobs"; // Import Blob component
 
 const skills = [
   "AWS",
@@ -77,16 +77,16 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="hero-section text-white relative">
-        <div className="blob-wrapper">
-        
-        </div>
+        <div className="blob-wrapper"></div>
 
         <div className="container mx-auto flex flex-col items-center text-center relative z-10 px-4 sm:px-8 md:px-12 py-20 fade-in">
           <div className="relative">
             <div className="profile-pic-wrapper">
-              <img
+              <Image
                 src="/assets/profile.jpeg"
                 alt="Sai Sri Teja Unnava"
+                width={200}
+                height={200}
                 className="profile-pic"
               />
             </div>
@@ -94,12 +94,12 @@ export default function Home() {
           <div className="mt-6">
             <h1 className="text-5xl font-bold mb-4">Sai Sri Teja Unnava</h1>
             <p className="text-lg mb-6 max-w-2xl mx-auto">
-              I'm passionate about Cloud Computing, DevOps, and automation. I
-              specialize in building robust CI/CD pipelines to enhance software
-              delivery at every stage. Additionally, I'm deeply involved in
-              designing scalable and secure cloud solutions using AWS and
-              modern infrastructure tools. I'm excited about developing and
-              working with{" "}
+              I&apos;m passionate about Cloud Computing, DevOps, and automation.
+              I specialize in building robust CI/CD pipelines to enhance
+              software delivery at every stage. Additionally, I&apos;m deeply
+              involved in designing scalable and secure cloud solutions using
+              AWS and modern infrastructure tools. I&apos;m excited about
+              developing and working with{" "}
               <span className="text-yellow-400 typing-text">{typedText}</span>.
             </p>
           </div>
@@ -127,9 +127,11 @@ export default function Home() {
       {/* DevOps Section */}
       <section id="devops" ref={devOpsRef} className="section">
         <div className="container mx-auto flex items-center gap-8">
-          <img
+          <Image
             src="/assets/devops-icon.png"
             alt="DevOps Tools"
+            width={100}
+            height={100}
             className="section-icon"
           />
           <div>
@@ -149,9 +151,11 @@ export default function Home() {
       {/* Cloud Computing Section */}
       <section id="cloud-computing" ref={cloudRef} className="section">
         <div className="container mx-auto flex items-center gap-8 flex-row-reverse">
-          <img
+          <Image
             src="/assets/cloud-icon.png"
             alt="Cloud Computing Illustration"
+            width={100}
+            height={100}
             className="section-icon"
           />
           <div className="text-right">

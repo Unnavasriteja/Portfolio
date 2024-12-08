@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "../../components/Button";
 import { Container } from "../../components/Container";
+import Image from "next/image";
 
 const AboutPage = () => {
   return (
@@ -11,19 +12,19 @@ const AboutPage = () => {
         {/* Hero Section */}
         <section className="hero-section mt-16 max-w-4xl">
           <h1 className="text-5xl font-bold text-gradient mb-4">
-            Hey, I'm Sai Sri Teja Unnava
+            Hey, I&apos;m Sai Sri Teja Unnava
           </h1>
           <p className="text-lg text-gray-200 leading-relaxed">
             Passionate about Cloud Computing, DevOps, and automation. I specialize
             in building robust CI/CD pipelines to enhance software delivery at
-            every stage. Additionally, I’m deeply involved in designing scalable
+            every stage. Additionally, I&apos;m deeply involved in designing scalable
             and secure cloud solutions using AWS and modern infrastructure tools.
           </p>
           <p className="text-lg text-gray-200 leading-relaxed mt-4">
-            When I’m not coding, I love spending time with my family and friends,
+            When I&apos;m not coding, I love spending time with my family and friends,
             creating special memories with them. Also, I enjoy playing chess ♟️
             and listening to music 🎵. Each activity brings something special to
-            my life, and I’m thankful to have lots of things I enjoy doing 😊.
+            my life, and I&apos;m thankful to have lots of things I enjoy doing 😊.
           </p>
         </section>
 
@@ -36,10 +37,12 @@ const AboutPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
+              <Image
                 src="/assets/certifications/aws-certification.png"
                 alt="AWS Certification"
-                className="w-24 h-24 hover:scale-105 transition-transform"
+                className="hover:scale-105 transition-transform"
+                width={96}
+                height={96}
               />
             </a>
           </div>
@@ -51,11 +54,11 @@ const AboutPage = () => {
             DevOps Toolset Expertise
           </h2>
           <div className="tools flex flex-wrap justify-center gap-8 mt-8">
-            <img src="/assets/tools-about/kubernetes.svg" alt="Kubernetes" className="w-23" />
-            <img src="/assets/tools-about/docker.svg" alt="Docker" className="w-23" />
-            <img src="/assets/tools-about/aws.svg" alt="AWS" className="w-23" />
-            <img src="/assets/tools-about/azure.svg" alt="Azure" className="w-23" />
-            <img src="/assets/tools-about/terraform.svg" alt="Terraform" className="w-23" />
+            <Image src="/assets/tools-about/kubernetes.svg" alt="Kubernetes" width={92} height={92} />
+            <Image src="/assets/tools-about/docker.svg" alt="Docker" width={92} height={92} />
+            <Image src="/assets/tools-about/aws.svg" alt="AWS" width={92} height={92} />
+            <Image src="/assets/tools-about/azure.svg" alt="Azure" width={92} height={92} />
+            <Image src="/assets/tools-about/terraform.svg" alt="Terraform" width={92} height={92} />
           </div>
         </section>
 
@@ -65,11 +68,11 @@ const AboutPage = () => {
             Frontend & Backend Expertise
           </h2>
           <div className="tools flex flex-wrap justify-center gap-8 mt-8">
-            <img src="/assets/tools-about/html.svg" alt="HTML" className="w-23" />
-            <img src="/assets/tools-about/css.svg" alt="CSS" className="w-23" />
-            <img src="/assets/tools-about/javascript.svg" alt="JavaScript" className="w-23" />
-            <img src="/assets/tools-about/python.svg" alt="Python" className="w-23" />
-            <img src="/assets/tools-about/nodejs.svg" alt="Node.js" className="w-23" />
+            <Image src="/assets/tools-about/html.svg" alt="HTML" width={92} height={92} />
+            <Image src="/assets/tools-about/css.svg" alt="CSS" width={92} height={92} />
+            <Image src="/assets/tools-about/javascript.svg" alt="JavaScript" width={92} height={92} />
+            <Image src="/assets/tools-about/python.svg" alt="Python" width={92} height={92} />
+            <Image src="/assets/tools-about/nodejs.svg" alt="Node.js" width={92} height={92} />
           </div>
         </section>
 
@@ -79,46 +82,10 @@ const AboutPage = () => {
             Libraries, Frameworks & Databases
           </h2>
           <div className="tools flex flex-wrap justify-center gap-8 mt-8">
-            <img src="/assets/tools-about/react.svg" alt="React" className="w-23" />
-            <img src="/assets/tools-about/redux.svg" alt="Redux" className="w-23" />
-            <img src="/assets/tools-about/django.svg" alt="Django" className="w-23" />
-            <img src="/assets/tools-about/mongodb.svg" alt="MongoDB" className="w-23" />
-          </div>
-        </section>
-
-        {/* Experience Section */}
-        <section id="experience" className="my-30">
-          <h2 className="text-3xl font-bold text-white text-center mt-16">
-            Work Experience
-          </h2>
-          <div className="experience-list mt-6">
-            <p className="text-lg text-gray-200">
-              <strong>Cloud & DevOps Engineer</strong> at Cognizant (Nov 2017 - Dec 2020)
-              <br />
-              Focused on Linux server administration, CI/CD, and cloud architecture.
-            </p>
-            <p className="text-lg text-gray-200 mt-4">
-              <strong>Freelance Work</strong> at Neuron Technologies (Mar 2023 - May 2023)
-              <br />
-              Worked on AWS infrastructure design and implementation in the UK.
-            </p>
-          </div>
-        </section>
-
-        {/* Education Section */}
-        <section id="education" className="my-30">
-          <h2 className="text-3xl font-bold text-white text-center mt-16">
-            Education
-          </h2>
-          <div className="education-list mt-6">
-            <p className="text-lg text-gray-200">
-              <strong>MSc in Cloud Computing</strong>
-              <br />
-              Focused on advanced cloud architectures and DevOps practices.
-              <br /><br />
-              <strong>B.Tech in Information Technology</strong>
-              <br />
-            </p>
+            <Image src="/assets/tools-about/react.svg" alt="React" width={92} height={92} />
+            <Image src="/assets/tools-about/redux.svg" alt="Redux" width={92} height={92} />
+            <Image src="/assets/tools-about/django.svg" alt="Django" width={92} height={92} />
+            <Image src="/assets/tools-about/mongodb.svg" alt="MongoDB" width={92} height={92} />
           </div>
         </section>
 
@@ -128,7 +95,7 @@ const AboutPage = () => {
             Interested in what I have to offer?
           </h2>
           <p className="text-lg text-gray-200 mt-4">
-            Feel free to reach out via the contact form. I'll get back to you as soon as possible.
+            Feel free to reach out via the contact form. I&apos;ll get back to you as soon as possible.
           </p>
           <div className="mt-8 flex justify-center gap-6">
             <Button href="/contact">Contact Me</Button>
