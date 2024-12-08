@@ -1,7 +1,7 @@
 import React from "react";
 
 interface PageTransitionProps {
-  children: React.ReactNode; // Only accept children
+  children: React.ReactNode; // Only children
 }
 
 const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {

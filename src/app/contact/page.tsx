@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
@@ -12,33 +13,40 @@ const ContactForm = () => {
     setFormStatus("idle");
 
     const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const formObject = Object.fromEntries(formData.entries());
+
+    // Debug: Check if environment variables are defined
+    if (
+      !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
+      !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
+      !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    ) {
+      console.error("Missing EmailJS environment variables.");
+      setFormStatus("error");
+      return;
+    }
 
     try {
-      const response = await fetch("/api/contact/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formObject),
-      });
+      // Send form data via EmailJS using environment variables
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        form,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
 
-      if (response.ok) {
-        setFormStatus("success");
-        form.reset();
-      } else {
-        setFormStatus("error");
-      }
+      console.log("Email sent successfully:", result.text);
+      setFormStatus("success");
+      form.reset();
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error sending email:", error);
       setFormStatus("error");
     }
   };
 
   return (
     <div className="container mx-auto px-6 py-20 mt-16 max-w-4xl">
-      <br /><br />
+      <br />
+      <br />
       <h1 className="text-5xl font-bold mb-10 text-center text-white">Contact</h1>
       <form
         onSubmit={handleSubmit}
@@ -46,7 +54,6 @@ const ContactForm = () => {
         style={{ background: "transparent" }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* First Name */}
           <div>
             <label
               className="block text-sm font-semibold text-white mb-2"
@@ -63,8 +70,6 @@ const ContactForm = () => {
               placeholder="Enter your first name"
             />
           </div>
-
-          {/* Last Name */}
           <div>
             <label
               className="block text-sm font-semibold text-white mb-2"
@@ -81,8 +86,6 @@ const ContactForm = () => {
               placeholder="Enter your last name"
             />
           </div>
-
-          {/* Email */}
           <div className="md:col-span-2">
             <label
               className="block text-sm font-semibold text-white mb-2"
@@ -99,8 +102,6 @@ const ContactForm = () => {
               placeholder="example@gmail.com"
             />
           </div>
-
-          {/* Subject */}
           <div className="md:col-span-2">
             <label
               className="block text-sm font-semibold text-white mb-2"
@@ -117,8 +118,6 @@ const ContactForm = () => {
               placeholder="Enter the subject"
             />
           </div>
-
-          {/* Message */}
           <div className="md:col-span-2">
             <label
               className="block text-sm font-semibold text-white mb-2"
@@ -136,7 +135,6 @@ const ContactForm = () => {
             ></textarea>
           </div>
         </div>
-
         <button
           type="submit"
           className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
@@ -144,7 +142,6 @@ const ContactForm = () => {
           Send
         </button>
       </form>
-
       {formStatus === "success" && (
         <p className="text-green-500 text-center mt-6">
           Your message has been sent successfully!
