@@ -19,18 +19,20 @@ const skills = [
   "ReactJs",
 ];
 
-const fadeInVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
+const slideInVariant = (direction: "left" | "right") => ({
+  hidden: { opacity: 0, x: direction === "left" ? -200 : 200 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+});
 
 export default function Home() {
   const [typedText, setTypedText] = useState("");
   const [skillIndex, setSkillIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(100);
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
 
   // Typing Animation Logic
   useEffect(() => {
@@ -58,35 +60,14 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [typedText, isDeleting, skillIndex, speed]);
 
-  // Fetch Random Quote
-  useEffect(() => {
-    const fetchQuote = async () => {
-      try {
-        const response = await fetch("https://api.quotable.io/random?tags=inspirational");
-        const data = await response.json();
-        setQuote(data.content);
-        setAuthor(data.author);
-      } catch (error) {
-        console.error("Error fetching quote:", error);
-        setQuote("Stay positive, work hard, and make it happen.");
-        setAuthor("Unknown");
-      }
-    };
-
-    fetchQuote();
-  }, []);
-
   return (
     <>
       {/* Hero Section */}
       <motion.section
         initial="hidden"
         animate="visible"
-        variants={fadeInVariant}
         className="hero-section text-white relative"
       >
-        <div className="blob-wrapper"></div>
-
         <div className="container mx-auto flex flex-col items-center text-center relative z-10 px-4 sm:px-8 md:px-12 py-20">
           <div className="relative">
             <motion.div
@@ -133,16 +114,6 @@ export default function Home() {
               Know more about me →
             </motion.a>
           </div>
-
-          {/* Random Quote */}
-          <div className="mt-8">
-            <p className="text-xl italic text-gray-400">
-              "{quote}"
-            </p>
-            {author && (
-              <p className="text-lg text-gray-500 mt-2">— {author}</p>
-            )}
-          </div>
         </div>
       </motion.section>
 
@@ -151,21 +122,23 @@ export default function Home() {
         id="devops"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInVariant}
-        className="section"
+        viewport={{ once: false, amount: 0.5 }}
+        variants={slideInVariant("left")}
+        className="section py-16"
       >
-        <div className="container mx-auto flex items-center gap-8">
-          <Image
-            src="/assets/devops-icon.png"
-            alt="DevOps Tools"
-            width={100}
-            height={100}
-            className="section-icon"
-          />
+        <div className="container mx-auto flex flex-col md:flex-row items-center gap-8">
+          <motion.div className="flex-shrink-0">
+            <Image
+              src="/assets/devops-icon.png"
+              alt="DevOps Tools"
+              width={300}
+              height={300}
+              className="section-icon"
+            />
+          </motion.div>
           <div>
-            <h2 className="text-3xl font-bold mb-4">DevOps</h2>
-            <p className="text-lg">
+            <h2 className="text-3xl font-bold mb-4 text-left">DevOps</h2>
+            <p className="text-lg text-left">
               Streamlining Development and Operational Processes: I also have
               experience with Infrastructure as Code (IaC), using tools like
               Terraform or CloudFormation to provision and manage cloud
@@ -182,21 +155,25 @@ export default function Home() {
         id="cloud-computing"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInVariant}
-        className="section"
+        viewport={{ once: false, amount: 0.5 }}
+        variants={slideInVariant("right")}
+        className="section py-16"
       >
-        <div className="container mx-auto flex items-center gap-8 flex-row-reverse">
-          <Image
-            src="/assets/cloud-icon.png"
-            alt="Cloud Computing Illustration"
-            width={100}
-            height={100}
-            className="section-icon"
-          />
-          <div className="text-right">
-            <h2 className="text-3xl font-bold mb-4">Cloud Computing</h2>
-            <p className="text-lg">
+        <div className="container mx-auto flex flex-col md:flex-row-reverse items-center gap-8">
+          <motion.div className="flex-shrink-0">
+            <Image
+              src="/assets/cloud-icon.png"
+              alt="Cloud Computing Illustration"
+              width={300}
+              height={300}
+              className="section-icon"
+            />
+          </motion.div>
+          <div>
+            <h2 className="text-3xl font-bold mb-4 text-right">
+              Cloud Computing
+            </h2>
+            <p className="text-lg text-right">
               Seamlessly Scaling Web Applications with AWS and Azure: I have
               hands-on experience with cloud platforms such as AWS and Azure.
               By leveraging cloud services like Amazon S3 for storage, AWS
