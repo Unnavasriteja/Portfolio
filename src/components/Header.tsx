@@ -13,6 +13,11 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Close mobile menu
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   // Add scroll effect for header background
   useEffect(() => {
     const handleScroll = () => {
@@ -73,8 +78,6 @@ const Header: React.FC = () => {
           >
             Projects
           </Link>
-        
-          
           <Link
             href="/contact"
             className="hover:text-yellow-400 transition-colors duration-300"
@@ -103,6 +106,7 @@ const Header: React.FC = () => {
             href="/about"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
+            onClick={closeMobileMenu}
           >
             About
           </Link>
@@ -110,6 +114,7 @@ const Header: React.FC = () => {
             href="/#skills"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
+            onClick={closeMobileMenu}
           >
             Skills
           </Link>
@@ -117,6 +122,7 @@ const Header: React.FC = () => {
             href="/#projects"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
+            onClick={closeMobileMenu}
           >
             Projects
           </Link>
@@ -124,6 +130,7 @@ const Header: React.FC = () => {
             href="/#experience"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
+            onClick={closeMobileMenu}
           >
             Experience
           </Link>
@@ -131,6 +138,7 @@ const Header: React.FC = () => {
             href="/contact"
             className="hover:text-yellow-400 transition-colors duration-300"
             role="menuitem"
+            onClick={closeMobileMenu}
           >
             Contact
           </Link>
