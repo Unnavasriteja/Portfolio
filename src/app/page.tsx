@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Framer Motion Import
+import { motion } from "framer-motion";
 import "../styles/global.css";
 
 const skills = [
@@ -29,6 +29,8 @@ export default function Home() {
   const [skillIndex, setSkillIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [speed, setSpeed] = useState(100);
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
   // Typing Animation Logic
   useEffect(() => {
@@ -55,6 +57,24 @@ export default function Home() {
     const interval = setInterval(handleTyping, speed);
     return () => clearInterval(interval);
   }, [typedText, isDeleting, skillIndex, speed]);
+
+  // Fetch Random Quote
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        const response = await fetch("https://api.quotable.io/random?tags=inspirational");
+        const data = await response.json();
+        setQuote(data.content);
+        setAuthor(data.author);
+      } catch (error) {
+        console.error("Error fetching quote:", error);
+        setQuote("Stay positive, work hard, and make it happen.");
+        setAuthor("Unknown");
+      }
+    };
+
+    fetchQuote();
+  }, []);
 
   return (
     <>
@@ -112,6 +132,16 @@ export default function Home() {
             >
               Know more about me →
             </motion.a>
+          </div>
+
+          {/* Random Quote */}
+          <div className="mt-8">
+            <p className="text-xl italic text-gray-400">
+              "{quote}"
+            </p>
+            {author && (
+              <p className="text-lg text-gray-500 mt-2">— {author}</p>
+            )}
           </div>
         </div>
       </motion.section>
