@@ -3,7 +3,8 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Blob from "../components/Blobs"; // Import the shared Blob component
+import Blob from "../components/Blobs";
+import PageTransition from "../components/PageTransition"; // Import PageTransition
 import "../styles/global.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -28,8 +29,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Header */}
           <Header />
 
-          {/* Main Content */}
-          <main className="content-container flex-grow">{children}</main>
+          {/* Main Content with PageTransition */}
+          <main className="content-container flex-grow">
+            <PageTransition>{children}</PageTransition>
+          </main>
 
           {/* Footer */}
           <Footer />

@@ -1,15 +1,11 @@
-import Layout from "../app/layout";
-import "../styles/global.css";
-import PageTransition from "../components/PageTransition";
+import React from "react";
 
-import { AppProps } from "next/app";
-
-export default function App({ Component, pageProps, router }: AppProps) {
-  return (
-    <Layout>
-      <PageTransition>
-        <Component {...pageProps} key={router.route} />
-      </PageTransition>
-    </Layout>
-  );
+interface PageTransitionProps {
+  children: React.ReactNode; // Only accept children
 }
+
+const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
+  return <div className="page-transition">{children}</div>;
+};
+
+export default PageTransition;
