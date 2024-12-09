@@ -80,55 +80,57 @@ const Projects = () => {
             }}
           >
             {/* Hover Background Animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-20 z-0 transition-opacity duration-500"></div>
 
-            <h2 className="text-2xl font-bold text-white mb-4">
-              {project.title}
-            </h2>
-            <p className="text-gray-300 mb-4">{project.description}</p>
-            {project.techStack.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm"
+            <div className="relative z-10">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                {project.title}
+              </h2>
+              <p className="text-gray-300 mb-4">{project.description}</p>
+              {project.techStack.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.techStack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <div className="flex gap-4">
+                {project.github ? (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:text-blue-700"
+                    aria-label={`View ${project.title} on GitHub`}
                   >
-                    {tech}
+                    <FaGithub className="text-2xl" />
+                  </a>
+                ) : project.comingSoon ? (
+                  <span className="text-gray-500 cursor-not-allowed">
+                    <FaGithub className="text-2xl" />
                   </span>
-                ))}
+                ) : null}
+                {project.demo ? (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-500 hover:text-green-700"
+                    aria-label={`View ${project.title} demo`}
+                  >
+                    <FaExternalLinkAlt className="text-2xl" />
+                  </a>
+                ) : project.comingSoon ? (
+                  <span className="text-gray-500 cursor-not-allowed">
+                    <FaExternalLinkAlt className="text-2xl" />
+                  </span>
+                ) : null}
               </div>
-            )}
-            <div className="flex gap-4">
-              {project.github ? (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-700"
-                  aria-label={`View ${project.title} on GitHub`}
-                >
-                  <FaGithub className="text-2xl" />
-                </a>
-              ) : project.comingSoon ? (
-                <span className="text-gray-500 cursor-not-allowed">
-                  <FaGithub className="text-2xl" />
-                </span>
-              ) : null}
-              {project.demo ? (
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-500 hover:text-green-700"
-                  aria-label={`View ${project.title} demo`}
-                >
-                  <FaExternalLinkAlt className="text-2xl" />
-                </a>
-              ) : project.comingSoon ? (
-                <span className="text-gray-500 cursor-not-allowed">
-                  <FaExternalLinkAlt className="text-2xl" />
-                </span>
-              ) : null}
             </div>
           </motion.div>
         ))}

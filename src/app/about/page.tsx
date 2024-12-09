@@ -19,42 +19,6 @@ const AboutPage = () => {
       transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
   };
-
-  const StylishDivider = () => (
-    <motion.div
-      className="flex justify-center items-center my-8"
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.5 }}
-    >
-      <div className="w-full h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative overflow-hidden">
-        <div
-          className="absolute w-full h-full top-0 left-0 animate-gradient-flow"
-          style={{
-            background: "linear-gradient(90deg, pink, purple, blue, pink)",
-            backgroundSize: "300% 100%",
-          }}
-        ></div>
-      </div>
-      <style jsx>{`
-        @keyframes gradient-flow {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        .animate-gradient-flow {
-          animation: gradient-flow 5s infinite linear;
-        }
-      `}</style>
-    </motion.div>
-  );
-
   return (
     <motion.div
       className="about-page flex flex-col items-center text-center px-6"
@@ -67,60 +31,68 @@ const AboutPage = () => {
       }}
     >
       <Container>
-        {/* Hero Section */}
-        <motion.section
-          className="hero-section mt-20 max-w-6xl"
-          variants={fadeInVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl font-bold text-gradient mb-4">
-            Hey, I&apos;m Sai Sri Teja Unnava
-          </h1>
-          <p className="text-lg text-gray-200 leading-relaxed">
-            Passionate about Cloud Computing, DevOps, and automation. I
-            specialize in building robust CI/CD pipelines to enhance software
-            delivery at every stage. Additionally, I&apos;m deeply involved in
-            designing scalable and secure cloud solutions using AWS and modern
-            infrastructure tools.
-          </p>
-          <p className="text-lg text-gray-200 leading-relaxed mt-4">
-            When I&apos;m not coding, I love spending time with my family and
-            friends, creating special memories with them. Also, I enjoy playing
-            chess ♟️ and listening to music 🎵. Each activity brings something
-            special to my life, and I&apos;m thankful to have lots of things I
-            enjoy doing 😊.
-          </p>
-        </motion.section>
+{/* Hero Section */}
+<motion.section
+  className="hero-section mt-20 max-w-6xl mx-auto px-6 py-12 relative"
+  variants={fadeInVariants}
+  initial="hidden"
+  animate="visible"
+  transition={{ duration: 0.8 }}
+>
+  <div className="border border-gray-600 rounded-lg p-8 shadow-lg">
+    <h1 className="text-5xl font-bold text-white mb-4 text-center">
+      Hey, I&apos;m Sai Sri Teja Unnava
+    </h1>
+    <p className="text-lg text-gray-200 leading-relaxed text-center">
+      Passionate about Cloud Computing, DevOps, and automation. I specialize in
+      building robust CI/CD pipelines to enhance software delivery at every
+      stage. Additionally, I&apos;m deeply involved in designing scalable and
+      secure cloud solutions using AWS and modern infrastructure tools.
+    </p>
+    <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
+      When I&apos;m not coding, I love spending time with my family and friends,
+      creating special memories with them. Also, I enjoy playing chess ♟️ and
+      listening to music 🎵. Each activity brings something special to my life,
+      and I&apos;m thankful to have lots of things I enjoy doing 😊.
+    </p>
+  </div>
+</motion.section>
 
-        {/* Stylish Divider */}
-        <StylishDivider />
+
+
+
 
         {/* Certification Section */}
-        <motion.section
-          id="certification"
-          className="mt-12"
-          variants={fadeInVariants}
-        >
-          <h2 className="text-3xl font-bold text-white text-center mb-4">
-            Certification Highlights
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Image
-              src="/assets/certifications/aws-certification.png"
-              alt="AWS Certification"
-              width={100}
-              height={100}
-              className="hover:scale-105 transition-transform"
-            />
-          </div>
-        </motion.section>
+          <motion.section
+            id="certification"
+            className="mt-12"
+            variants={fadeInVariants}
+          >
+            <h2 className="text-3xl font-bold text-white text-center mb-4">
+              Certification Highlights
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://www.credly.com/badges/89d1f07b-5246-4cf5-a66f-3e954c8ade36/public_url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/assets/certifications/aws-certification.png"
+                  alt="AWS Certification"
+                  width={100}
+                  height={100}
+                  className="hover:scale-105 transition-transform"
+                />
+              </a>
+            </div>
+          </motion.section>
+
 
         {/* Stylish Divider */}
     
 
-        {/* Cloud Platforms Section */}
+       {/* Cloud Platforms Section */}
         <motion.section
           id="cloud-platforms"
           className="mt-12"
@@ -139,16 +111,13 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                <span className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   {platform}
                 </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
-        {/* Stylish Divider */}
-   
 
         {/* DevOps Tools Section */}
         <motion.section
@@ -177,16 +146,13 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                <span className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   {tool}
                 </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
-        {/* Stylish Divider */}
-    
 
         {/* Developer Tools Section */}
         <motion.section
@@ -207,16 +173,13 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                <span className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   {tool}
                 </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
-        {/* Stylish Divider */}
-     
 
         {/* Libraries, Frameworks, and Databases Section */}
         <motion.section
@@ -237,7 +200,7 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                <span className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-sm py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   {item}
                 </span>
               </motion.div>
@@ -323,32 +286,42 @@ const AboutPage = () => {
         
 
         {/* Contact Section */}
+      {/* Contact Section */}
         <section id="contact" className="mt-12">
-  <h2 className="text-3xl font-bold text-white text-center mb-4">
-    Interested in what I have to offer?
-  </h2>
-  <p className="text-lg text-gray-200 mt-2 text-center">
-    Feel free to reach out via the contact form. I&apos;ll get back to
-    you as soon as possible.
-  </p>
-  <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4 items-center">
-    <Button
-      href="/contact"
-      aria-label="Go to the contact form"
-      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md text-center"
-    >
-      Contact Me
-    </Button>
-    <a
-      href="https://drive.google.com/uc?export=download&id=1Wm_lkOzrX7p3GFoldMmwbK61soQsX6no"
-      download
-      aria-label="Download my resume"
-      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md text-center"
-    >
-      Download Resume
-    </a>
-  </div>
-</section>
+          <h2 className="text-3xl font-bold text-white text-center mb-4">
+            Interested in what I have to offer?
+          </h2>
+          <p className="text-lg text-gray-200 mt-2 text-center">
+            Feel free to reach out via the contact form. I&apos;ll get back to
+            you as soon as possible.
+          </p>
+          <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4 items-center">
+            {/* Contact Button */}
+            <motion.a
+              href="/contact"
+              aria-label="Go to the contact form"
+              className="px-6 py-3 rounded-lg bg-blue-500 text-white text-lg font-bold hover:bg-blue-700 transition duration-300 shadow-md text-center w-full sm:w-auto"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Me
+            </motion.a>
+
+            {/* Download Resume Button */}
+            <motion.a
+              href="https://drive.google.com/uc?export=download&id=1Wm_lkOzrX7p3GFoldMmwbK61soQsX6no"
+              download
+              aria-label="Download my resume"
+              className="px-6 py-3 rounded-lg bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white text-lg font-bold hover:scale-105 transition duration-300 shadow-md text-center w-full sm:w-auto"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Download Resume
+            </motion.a>
+          </div>
+        </section>
+
+
 
       </Container>
     </motion.div>

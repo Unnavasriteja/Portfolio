@@ -3,8 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-//import { FaWhatsapp } from "react-icons/fa";
-
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
@@ -18,14 +16,40 @@ const ContactForm = () => {
     const form = e.target as HTMLFormElement;
 
     try {
-      const result = await emailjs.sendForm(
+      const formData = new FormData(form);
+      const userEmail = formData.get("email");
+
+      console.log("Extracted user email:", userEmail);
+
+      if (!userEmail) {
+        throw new Error("Email is missing from the form data.");
+      }
+
+      // Send the message to your inbox (Admin Email)
+      await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+        process.env.NEXT_PUBLIC_ADMIN_TEMPLATE_ID as string,
         form,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
       );
 
-      console.log("Email sent successfully:", result.text);
+      console.log("Admin email sent successfully!");
+
+      // Send acknowledgment email to the user
+      const acknowledgmentData = {
+        email: userEmail, // The user's email address
+        subject: "Thank you for contacting me!", // Custom subject
+      };
+
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_ACK_TEMPLATE_ID as string,
+        acknowledgmentData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+      );
+
+      console.log("Acknowledgment email sent successfully to:", userEmail);
+
       setFormStatus("success");
       form.reset();
     } catch (error) {
@@ -42,7 +66,7 @@ const ContactForm = () => {
   return (
     <motion.div
       className="container mx-auto px-6 py-20 max-w-4xl"
-      style={{ paddingTop: "100px" }} // Adjusted padding
+      style={{ paddingTop: "100px" }}
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -61,7 +85,7 @@ const ContactForm = () => {
       {/* Contact Form */}
       <motion.form
         onSubmit={handleSubmit}
-        className="rounded-lg p-10"
+        className="rounded-lg border border-gray-600 p-8 shadow-lg"
         style={{ background: "transparent" }}
         variants={fadeInVariants}
       >
@@ -177,24 +201,6 @@ const ContactForm = () => {
           There was an error sending your message. Please try again.
         </motion.p>
       )}
-
-      {/* Quick Links Section */}
-      <motion.div
-        className="mt-16 text-center space-y-6"
-        variants={fadeInVariants}
-      >
-        {/* <motion.a
-          href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-green-500 text-white px-6 py-3 rounded-full flex items-center justify-center mx-auto hover:bg-green-600 transition"
-          style={{ maxWidth: "300px" }}
-          variants={fadeInVariants}
-        >
-          <FaWhatsapp className="mr-2 text-xl" />
-          Chat on WhatsApp
-        </motion.a> */}
-      </motion.div>
     </motion.div>
   );
 };
