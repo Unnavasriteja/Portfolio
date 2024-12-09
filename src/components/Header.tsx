@@ -6,7 +6,6 @@ import Link from "next/link";
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isHomePage, setIsHomePage] = useState(false);
 
   // Handle mobile menu toggle
   const toggleMobileMenu = () => {
@@ -31,13 +30,6 @@ const Header: React.FC = () => {
     };
   }, []);
 
-  // Determine if the current page is home
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsHomePage(window.location.pathname === "/");
-    }
-  }, []);
-
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
@@ -49,11 +41,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <h1
-          className={`text-xl font-bold transition-transform duration-300 ${
-            isScrolled || !isHomePage
-              ? "text-white"
-              : "gradient-text hover:scale-110"
-          }`}
+          className="gradient-text text-xl font-bold transition-transform duration-300 hover:scale-110"
         >
           <Link href="/">Sai Sri Teja Unnava</Link>
         </h1>
@@ -66,7 +54,7 @@ const Header: React.FC = () => {
           >
             About
           </Link>
-          
+
           <Link
             href="/projects"
             className="hover:text-yellow-400 transition-colors duration-300"
@@ -105,7 +93,7 @@ const Header: React.FC = () => {
           >
             About
           </Link>
-         
+
           <Link
             href="/projects"
             className="hover:text-yellow-400 transition-colors duration-300"
@@ -114,7 +102,7 @@ const Header: React.FC = () => {
           >
             Projects
           </Link>
-  
+
           <Link
             href="/contact"
             className="hover:text-yellow-400 transition-colors duration-300"
