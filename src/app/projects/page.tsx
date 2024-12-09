@@ -80,7 +80,7 @@ const Projects = () => {
             }}
           >
             {/* Hover Background Animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-500"></div>
 
             <h2 className="text-2xl font-bold text-white mb-4">
               {project.title}
@@ -98,7 +98,7 @@ const Projects = () => {
                 ))}
               </div>
             )}
-            <div className="flex gap-4 relative z-10">
+            <div className="flex gap-4">
               {project.github ? (
                 <a
                   href={project.github}
