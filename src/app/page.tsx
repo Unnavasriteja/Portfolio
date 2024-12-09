@@ -98,22 +98,23 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 mt-6">
-            <motion.a
-              href="contact"
-              className="btn-primary"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get in Touch
-            </motion.a>
-            <motion.a
-              href="about"
-              className="text-white underline text-lg hover:text-yellow-300"
-              whileHover={{ color: "#FFD700" }}
-            >
-              Know more about me →
-            </motion.a>
-          </div>
+          <motion.a
+            href="contact"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-bold hover:bg-blue-600 transition duration-300 shadow-lg"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get in Touch
+          </motion.a>
+          <motion.a
+            href="about"
+            className="text-white underline text-lg hover:text-yellow-300"
+            whileHover={{ color: "#FFD700" }}
+          >
+            Know more about me →
+          </motion.a>
+        </div>
+
         </div>
       </motion.section>
 
