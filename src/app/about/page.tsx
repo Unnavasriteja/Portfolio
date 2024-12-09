@@ -54,7 +54,7 @@ const AboutPage = () => {
       `}</style>
     </motion.div>
   );
-  
+
   return (
     <motion.div
       className="about-page flex flex-col items-center text-center px-6"
@@ -96,7 +96,6 @@ const AboutPage = () => {
 
         {/* Stylish Divider */}
         <StylishDivider />
-        
 
         {/* Certification Section */}
         <motion.section
@@ -119,7 +118,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* Stylish Divider */}
-        
+    
 
         {/* Cloud Platforms Section */}
         <motion.section
@@ -140,7 +139,7 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100">
+                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
                   {platform}
                 </span>
               </motion.div>
@@ -149,7 +148,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* Stylish Divider */}
-        
+   
 
         {/* DevOps Tools Section */}
         <motion.section
@@ -178,14 +177,16 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100">{tool}</span>
+                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                  {tool}
+                </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
         {/* Stylish Divider */}
-        
+    
 
         {/* Developer Tools Section */}
         <motion.section
@@ -206,14 +207,16 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100">{tool}</span>
+                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                  {tool}
+                </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
         {/* Stylish Divider */}
-        
+     
 
         {/* Libraries, Frameworks, and Databases Section */}
         <motion.section
@@ -234,17 +237,19 @@ const AboutPage = () => {
                   height={60}
                   className="hover:scale-105 transition-transform"
                 />
-                <span className="tooltip group-hover:opacity-100">{item}</span>
+                <span className="tooltip group-hover:opacity-100 group-hover:block hidden">
+                  {item}
+                </span>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
         {/* Stylish Divider */}
-        
+      
 
- {/* Work Experience Section */}
- <motion.section
+        {/* Work Experience Section */}
+        <motion.section
           id="experience"
           className="mt-12"
           variants={staggerContainer}
@@ -285,7 +290,7 @@ const AboutPage = () => {
         </motion.section>
 
         {/* Stylish Divider */}
-        
+     
 
         {/* Education Section */}
         <motion.section
@@ -315,23 +320,30 @@ const AboutPage = () => {
         </motion.section>
 
         {/* Stylish Divider */}
+        
 
         {/* Contact Section */}
-{/* Contact Section */}
-<section id="contact" className="mt-12">
+        <section id="contact" className="mt-12">
   <h2 className="text-3xl font-bold text-white text-center mb-4">
     Interested in what I have to offer?
   </h2>
-  <p className="text-lg text-gray-200 mt-2">
+  <p className="text-lg text-gray-200 mt-2 text-center">
     Feel free to reach out via the contact form. I&apos;ll get back to
     you as soon as possible.
   </p>
-  <div className="mt-4 flex justify-center gap-4">
-    <Button href="/contact">Contact Me</Button>
+  <div className="mt-4 flex flex-col sm:flex-row justify-center gap-4 items-center">
+    <Button
+      href="/contact"
+      aria-label="Go to the contact form"
+      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md text-center"
+    >
+      Contact Me
+    </Button>
     <a
       href="https://drive.google.com/uc?export=download&id=1Wm_lkOzrX7p3GFoldMmwbK61soQsX6no"
       download
-      className="btn-secondary"
+      aria-label="Download my resume"
+      className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md text-center"
     >
       Download Resume
     </a>

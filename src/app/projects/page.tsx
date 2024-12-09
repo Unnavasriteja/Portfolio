@@ -9,7 +9,7 @@ const projects = [
     title: "Cloud Infrastructure Automation",
     description: "Automated cloud infrastructure provisioning using Terraform.",
     techStack: ["Terraform", "AWS", "Jenkins"],
-    github: "https://github.com/example/cloud-infra-automation",
+    github: "https://github.com/NotHarshhaa/DevOps-Projects/tree/master/DevOps-Project-20",
     demo: "https://example.com/demo",
   },
   {
@@ -17,16 +17,16 @@ const projects = [
     description:
       "Designed scalable Kubernetes clusters for microservices deployment.",
     techStack: ["Kubernetes", "Docker", "Helm"],
-    github: "https://github.com/example/kubernetes-deployment",
+    github: "https://github.com/NotHarshhaa/Deployment-of-super-Mario-on-Kubernetes-using-terraform",
     demo: "https://example.com/demo",
   },
   {
     title: "CI/CD Pipeline Setup",
-    description:
-      "Implemented CI/CD pipelines for efficient software delivery.",
+    description: "Implemented CI/CD pipelines for efficient software delivery.",
     techStack: ["Jenkins", "GitLab CI", "AWS CodePipeline"],
-    github: "",
+    github: "https://github.com/NotHarshhaa/DevOps-Projects/tree/master/DevOps-Project-07",
     demo: "",
+    comingSoon: true,
   },
   {
     title: "Coming Soon",
@@ -34,6 +34,7 @@ const projects = [
     techStack: [],
     github: "",
     demo: "",
+    comingSoon: true,
   },
 ];
 
@@ -45,7 +46,7 @@ const Projects = () => {
 
   return (
     <motion.div
-      className="container mx-auto px-6 py-20 max-w-6xl pt-32" // Adjusted padding-top for spacing
+      className="container mx-auto px-6 py-20 max-w-6xl pt-32"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -58,7 +59,6 @@ const Projects = () => {
         className="text-5xl font-bold mb-10 text-center text-white"
         variants={cardVariants}
       >
-        <br />
         My Projects
       </motion.h1>
       <motion.div
@@ -80,7 +80,7 @@ const Projects = () => {
             }}
           >
             {/* Hover Background Animation */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-0 hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
 
             <h2 className="text-2xl font-bold text-white mb-4">
               {project.title}
@@ -98,35 +98,37 @@ const Projects = () => {
                 ))}
               </div>
             )}
-            <div className="flex gap-4">
+            <div className="flex gap-4 relative z-10">
               {project.github ? (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:text-blue-700"
+                  aria-label={`View ${project.title} on GitHub`}
                 >
                   <FaGithub className="text-2xl" />
                 </a>
-              ) : (
+              ) : project.comingSoon ? (
                 <span className="text-gray-500 cursor-not-allowed">
                   <FaGithub className="text-2xl" />
                 </span>
-              )}
+              ) : null}
               {project.demo ? (
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-green-500 hover:text-green-700"
+                  aria-label={`View ${project.title} demo`}
                 >
                   <FaExternalLinkAlt className="text-2xl" />
                 </a>
-              ) : (
+              ) : project.comingSoon ? (
                 <span className="text-gray-500 cursor-not-allowed">
                   <FaExternalLinkAlt className="text-2xl" />
                 </span>
-              )}
+              ) : null}
             </div>
           </motion.div>
         ))}
