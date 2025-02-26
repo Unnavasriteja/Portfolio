@@ -81,6 +81,9 @@ export default function Home() {
                 alt="Sai Sri Teja Unnava"
                 width={200}
                 height={200}
+                priority // Prioritize above-the-fold image
+                placeholder="blur" // Adds blur effect for better UX
+                blurDataURL="/assets/blur-placeholder.jpg" // Replace with a real blur placeholder
                 className="profile-pic"
               />
             </motion.div>
@@ -98,27 +101,25 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 mt-6">
-  <motion.a
-    href="contact"
-    className="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-bold hover:bg-blue-600 transition duration-300 shadow-lg"
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    Get in Touch
-  </motion.a>
-  <motion.a
-    href="about"
-    className="px-6 py-3 text-lg font-bold rounded-lg bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white shadow-lg transition duration-300"
-    whileHover={{
-      scale: 1.1,
-    }}
-    whileTap={{ scale: 0.95 }}
-  >
-    Know more about me →
-  </motion.a>
-</div>
-
-
+            <motion.a
+              href="contact"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-bold hover:bg-blue-600 transition duration-300 shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get in Touch
+            </motion.a>
+            <motion.a
+              href="about"
+              className="px-6 py-3 text-lg font-bold rounded-lg bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white shadow-lg transition duration-300"
+              whileHover={{
+                scale: 1.1,
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Know more about me →
+            </motion.a>
+          </div>
         </div>
       </motion.section>
 
@@ -138,6 +139,8 @@ export default function Home() {
               alt="DevOps Tools"
               width={300}
               height={300}
+              placeholder="blur"
+              blurDataURL="/assets/devops-placeholder.jpg"
               className="section-icon"
             />
           </motion.div>
@@ -171,6 +174,8 @@ export default function Home() {
               alt="Cloud Computing Illustration"
               width={300}
               height={300}
+              placeholder="blur"
+              blurDataURL="/assets/cloud-placeholder.jpg"
               className="section-icon"
             />
           </motion.div>
