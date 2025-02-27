@@ -44,22 +44,24 @@ const AboutPage = () => {
       Hey, I&apos;m Sai Sri Teja Unnava
     </h1>
     <p className="text-lg text-gray-200 leading-relaxed text-center">
-    Passionate about Cloud Computing, DevOps, and automation. I specialize in 
-    building scalable and secure cloud solutions using AWS, Kubernetes, Terraform, 
-    and CI/CD pipelines. My goal is to streamline deployments, optimize infrastructure, 
-    and drive efficiency through automation.
+    passionate about Cloud Computing, DevOps, and automation. I specialize in 
+    building scalable, secure, and high-performing cloud solutions using AWS, Kubernetes, 
+    Terraform, and CI/CD tools. My goal is to optimize software delivery and infrastructure 
+    efficiency, ensuring seamless deployments and reliable cloud architectures.
     </p>
     <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
-    When I&apos;m not working with cloud technologies, I love spending time with my 
-    family and friends, creating special memories. I also enjoy playing chess ♟️, 
-    listening to music 🎵, experimenting in the kitchen 🍳, and traveling to explore 
-    new places 🌍. On the creative side, I occasionally perform stand-up comedy 🎤, 
-    bringing a little humor into the mix.
+    With around 5 years of experience, I enjoy designing CI/CD pipelines, automating infrastructure, 
+    and solving complex cloud challenges. From container orchestration to cloud security, I thrive 
+    in crafting solutions that enhance performance and scalability.
     </p>
     <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
-    Each of these activities adds something special to my journey, and I&apos;m grateful 
-    to have such diverse interests that keep me inspired! 😊
+    Beyond the tech world, I enjoy spending time with my family and friends, 
+    creating meaningful experiences.I love traveling to explore new places 🌍, experimenting in the kitchen 🍳, 
+    and enjoying good music 🎵. On the creative side, I occasionally perform stand-up comedy 🎤, 
+    bringing a little humor into the mix. These passions keep me inspired, helping me bring fresh 
+    perspectives to both life and work."
     </p>
+    
   </div>
 </motion.section>
       {/* Certification Section */}
