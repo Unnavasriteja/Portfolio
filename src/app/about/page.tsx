@@ -44,25 +44,25 @@ const AboutPage = () => {
       Hey, I&apos;m Sai Sri Teja Unnava
     </h1>
     <p className="text-lg text-gray-200 leading-relaxed text-center">
-      Passionate about Cloud Computing, DevOps, and automation. I specialize in
-      building robust CI/CD pipelines to enhance software delivery at every
-      stage. Additionally, I&apos;m deeply involved in designing scalable and
-      secure cloud solutions using AWS and modern infrastructure tools.
+    Passionate about Cloud Computing, DevOps, and automation. I specialize in 
+    building scalable and secure cloud solutions using AWS, Kubernetes, Terraform, 
+    and CI/CD pipelines. My goal is to streamline deployments, optimize infrastructure, 
+    and drive efficiency through automation.
     </p>
     <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
-      When I&apos;m not coding, I love spending time with my family and friends,
-      creating special memories with them. Also, I enjoy playing chess ♟️ and
-      listening to music 🎵. Each activity brings something special to my life,
-      and I&apos;m thankful to have lots of things I enjoy doing 😊.
+    When I&apos;m not working with cloud technologies, I love spending time with my 
+    family and friends, creating special memories. I also enjoy playing chess ♟️, 
+    listening to music 🎵, experimenting in the kitchen 🍳, and traveling to explore 
+    new places 🌍. On the creative side, I occasionally perform stand-up comedy 🎤, 
+    bringing a little humor into the mix.
+    </p>
+    <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
+    Each of these activities adds something special to my journey, and I&apos;m grateful 
+    to have such diverse interests that keep me inspired! 😊
     </p>
   </div>
 </motion.section>
-
-
-
-
-
-        {/* Certification Section */}
+      {/* Certification Section */}
           <motion.section
             id="certification"
             className="mt-12"
