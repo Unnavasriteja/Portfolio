@@ -8,32 +8,24 @@ const ContactForm = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">(
     "idle"
   );
-  const [isSubmitting, setIsSubmitting] = useState(false); // Prevents multiple clicks
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (formStatus !== "idle" || isSubmitting) return; // Prevent multiple submissions
-    console.log("🟢 Form submitted!");
-
-    setIsSubmitting(true);
     setFormStatus("idle");
 
     const form = e.target as HTMLFormElement;
 
     try {
       const formData = new FormData(form);
-      const userEmail = formData.get("email") as string;
-      const userName = formData.get("firstName") as string;
-      const userMessage = formData.get("message") as string;
+      const userEmail = formData.get("email");
 
-      console.log("📩 Extracted user email:", userEmail);
+      console.log("Extracted user email:", userEmail);
 
       if (!userEmail) {
-        throw new Error("⚠️ Email is missing from the form data.");
+        throw new Error("Email is missing from the form data.");
       }
 
-      // 🔹 Send message to your inbox (Admin Email)
+      // Send the message to your inbox (Admin Email)
       await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_ADMIN_TEMPLATE_ID as string,
@@ -41,32 +33,28 @@ const ContactForm = () => {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
       );
 
-      console.log("✅ Admin email sent successfully!");
+      console.log("Admin email sent successfully!");
 
-      // 🔹 Send acknowledgment email to the user
+      // Send acknowledgment email to the user
       const acknowledgmentData = {
-        user_name: userName,
-        email: userEmail,
-        message:
-          "Thank you for reaching out! I have received your message and will get back to you soon.",
+        email: userEmail, // The user's email address
+        subject: "Thank you for contacting me!", // Custom subject
       };
 
-      // await emailjs.send(
-      //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-      //   process.env.NEXT_PUBLIC_ACK_TEMPLATE_ID as string,
-      //   acknowledgmentData,
-      //   process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
-      // );
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_ACK_TEMPLATE_ID as string,
+        acknowledgmentData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+      );
 
-      console.log("✅ Acknowledgment email sent successfully to:", userEmail);
+      console.log("Acknowledgment email sent successfully to:", userEmail);
 
       setFormStatus("success");
       form.reset();
     } catch (error) {
-      console.error("❌ Error sending email:", error);
+      console.error("Error sending email:", error);
       setFormStatus("error");
-    } finally {
-      setIsSubmitting(false); // Enable form submission again
     }
   };
 
@@ -187,9 +175,8 @@ const ContactForm = () => {
           type="submit"
           className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
           variants={fadeInVariants}
-          disabled={isSubmitting} // Prevent multiple submissions
         >
-          {isSubmitting ? "Sending..." : "Send"}
+          Send
         </motion.button>
       </motion.form>
 
