@@ -24,8 +24,8 @@ const ContactForm = () => {
     try {
       const formData = new FormData(form);
       const userEmail = formData.get("email") as string;
-      //const userName = formData.get("firstName") as string;
-      //const userMessage = formData.get("message") as string;
+      const userName = formData.get("firstName") as string;
+      const userMessage = formData.get("message") as string;
 
       console.log("📩 Extracted user email:", userEmail);
 
