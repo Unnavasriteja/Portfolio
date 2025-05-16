@@ -57,8 +57,7 @@ const AboutPage = () => {
     <p className="text-lg text-gray-200 leading-relaxed mt-4 text-center">
     Beyond the tech world, I enjoy spending time with my family and friends, 
     creating meaningful experiences.I love traveling to explore new places 🌍, experimenting in the kitchen 🍳, 
-    and enjoying good music 🎵. On the creative side, I occasionally perform stand-up comedy 🎤, 
-    bringing a little humor into the mix. These passions keep me inspired, helping me bring fresh 
+    and enjoying good music 🎵. These passions keep me inspired, helping me bring fresh 
     perspectives to both life and work."
     </p>
     
