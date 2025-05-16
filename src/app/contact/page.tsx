@@ -44,12 +44,12 @@ const ContactForm = () => {
       console.log("✅ Admin email sent successfully!");
 
       // 🔹 Send acknowledgment email to the user
-      const acknowledgmentData = {
-        user_name: userName,
-        email: userEmail,
-        message:
-          "Thank you for reaching out! I have received your message and will get back to you soon.",
-      };
+      //const acknowledgmentData = {
+       // user_name: userName,
+      //  email: userEmail,
+      //  message:
+      //    "Thank you for reaching out! I have received your message and will get back to you soon.",
+     // };
 
       // await emailjs.send(
       //   process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
