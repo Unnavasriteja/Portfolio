@@ -24,7 +24,9 @@ const ContactForm = () => {
     try {
       const formData = new FormData(form);
       const userEmail = formData.get("email") as string;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const userName = formData.get("firstName") as string;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const userMessage = formData.get("message") as string;
 
       console.log("📩 Extracted user email:", userEmail);
